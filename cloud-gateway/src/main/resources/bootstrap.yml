@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: CLOUD-GATEWAY
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.0:8848
+        group: CLOUD-STUDY
+        service: CLOUD-GATEWAY
