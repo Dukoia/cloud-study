@@ -14,3 +14,23 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/master?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
 
+seata:
+  config:
+    type: file
+  application-id: cloud-account
+  #  enable-auto-data-source-proxy: false
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      cluster: default
+      group: SEATA_GROUP
+      server-addr: 127.0.0.1:8848
+      namespace: le_zi_jie
+  service:
+    grouplist:
+      default: 127.0.0.1:8091
+    vgroup-mapping:
+      springboot-seata-group: default
+  # seata 事务组编号 用于TC集群名
+  tx-service-group: cloud-study-seata-group
