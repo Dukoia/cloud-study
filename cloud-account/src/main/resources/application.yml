@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: cloud-account
+  datasource:
+    hikari:
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      max-pool-size: 15
+      min-idle: 5
+      connection-test-query: select 1
+      pool-name: DukoiaCP
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/master?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+

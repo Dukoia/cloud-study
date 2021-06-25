@@ -18,9 +18,11 @@ public class Result<T> {
     private String msg;
     private T data;
 
+    public static <T> Result<T> success(T data){
+        return new Result().setCode(200).setMsg("success").setData(data);
+    }
 
-
-    public boolean success(){
+    public boolean issSuccess(){
         return this.code.equals(ResultCodeConstant.SUCCESS_CODE);
     }
 
