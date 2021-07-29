@@ -1,6 +1,8 @@
 package com.dukoia.cloud.account.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.dukoia.cloud.Result;
+import com.dukoia.cloud.account.fallback.AccountFallback;
 import com.dukoia.cloud.entity.ConfigInfoDO;
 import com.dukoia.cloud.service.ConfigInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,11 @@ public class AccountController {
     ConfigInfoService configInfoService;
 
     @GetMapping("/getAccount/{id}")
-    public Result getAccount(@PathVariable("id") Long id){
+    @SentinelResource(value = "accountFallback",
+            blockHandlerClass = AccountFallback.class,
+            blockHandler = "handler")
+    public Result getAccount(@PathVariable("id") Long id) {
         ConfigInfoDO byId = configInfoService.getById(1);
-        return Result.success(byId);
+        return Result.success("byId");
     }
 }

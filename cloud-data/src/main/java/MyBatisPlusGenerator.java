@@ -80,12 +80,12 @@ public class MyBatisPlusGenerator {
                 //使用restcontroller注解
                 .setRestControllerStyle(true)
 
-                .setTablePrefix(new String[]{"pico_", "tsys_"})
+                .setTablePrefix(new String[]{"pico_", "tsys_","t_"})
 
                 // 生成的表, 支持多表一起生成，以数组形式填写
                 //TODO  TODO  TODO  TODO 两个方式，直接写，或者使用命令行输入
                 //方式 1
-                .setInclude("config_info");
+                .setInclude("t_account","t_order","t_storage");
 //                .setInclude("banner","guanggao");
         //方式 2
         //.setInclude(scanner("请输入要生成的表，多个用,来分隔").split(","));

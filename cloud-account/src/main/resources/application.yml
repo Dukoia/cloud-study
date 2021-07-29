@@ -1,3 +1,6 @@
+server:
+  port: 9001
+
 spring:
   application:
     name: cloud-account
@@ -13,54 +16,57 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/master?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
-
-
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8888
+        port: 8720
 
 seata:
   enabled: true
   application-id: cloud-account
-  tx-service-group: my_test_tx_group
+  tx-service-group: cloud_study_tx_group
   enable-auto-data-source-proxy: true
   data-source-proxy-mode: AT
   use-jdk-proxy: false
   client:
     rm:
-      async-commit-buffer-limit: 10000
-      report-retry-count: 5
-      table-meta-check-enable: false
+#      async-commit-buffer-limit: 10000
+#      report-retry-count: 5
+#      table-meta-check-enable: false
       report-success-enable: false
-      saga-branch-register-enable: false
-      saga-json-parser: fastjson
-      saga-retry-persist-mode-update: false
-      saga-compensate-persist-mode-update: false
-      tcc-action-interceptor-order: -2147482648 #Ordered.HIGHEST_PRECEDENCE + 1000
-      lock:
-        retry-interval: 10
-        retry-times: 30
-        retry-policy-branch-rollback-on-conflict: true
-    tm:
-      commit-retry-count: 5
-      rollback-retry-count: 5
-      default-global-transaction-timeout: 60000
-      degrade-check: false
-      degrade-check-period: 2000
-      degrade-check-allow-times: 10
-      interceptor-order: -2147482648 #Ordered.HIGHEST_PRECEDENCE + 1000
-    undo:
-      data-validation: true
-      log-serialization: jackson
-      log-table: undo_log
-      only-care-update-columns: true
-      compress:
-        enable: true
-        type: zip
-        threshold: 64k
-    load-balance:
-      type: RandomLoadBalance
-      virtual-nodes: 10
+#      saga-branch-register-enable: false
+#      saga-json-parser: fastjson
+#      saga-retry-persist-mode-update: false
+#      saga-compensate-persist-mode-update: false
+#      tcc-action-interceptor-order: -2147482648 #Ordered.HIGHEST_PRECEDENCE + 1000
+#      lock:
+#        retry-interval: 10
+#        retry-times: 30
+#        retry-policy-branch-rollback-on-conflict: true
+#    tm:
+#      commit-retry-count: 5
+#      rollback-retry-count: 5
+#      default-global-transaction-timeout: 60000
+#      degrade-check: false
+#      degrade-check-period: 2000
+#      degrade-check-allow-times: 10
+#      interceptor-order: -2147482648 #Ordered.HIGHEST_PRECEDENCE + 1000
+#    undo:
+#      data-validation: true
+#      log-serialization: jackson
+#      log-table: undo_log
+#      only-care-update-columns: true
+#      compress:
+#        enable: true
+#        type: zip
+#        threshold: 64k
+#    load-balance:
+#      type: RandomLoadBalance
+#      virtual-nodes: 10
   service:
     vgroup-mapping:
-      my_test_tx_group: default
+      cloud_study_tx_group: default
     grouplist:
       default: 127.0.0.1:8091
     enable-degrade: false
@@ -84,15 +90,6 @@ seata:
     serialization: seata
     compressor: none
     enable-client-batch-send-request: true
-#  config:
-#    type: nacos
-#    nacos:
-#      namespace: ""
-#      server-addr: 127.0.0.1:8848
-#      group: SEATA_GROUP
-#      username: ""
-#      password: ""
-#      data-id: seata.properties
   registry:
     type: nacos
     nacos:
@@ -102,11 +99,22 @@ seata:
       namespace: "cloud-study"
       username: "nacos"
       password: "nacos"
-  log:
-    exception-rate: 100
-  tcc-fence:
-    enable: true
-    config:
-      log-table-name: tcc_fence_log
-      clean-mode: hour
-      clean-period: 1
+#  config:
+#    type: nacos
+#    nacos:
+#      server-addr: 127.0.0.1:8848
+#      group: SEATA_GROUP
+#      username: nacos
+#      password: nacos
+#      namespace: 0af6e97b-a684-4647-b696-7c6d42aecce7
+#  log:
+#    exception-rate: 100
+#  tcc-fence:
+#    enable: true
+#    config:
+#      log-table-name: tcc_fence_log
+#      clean-mode: hour
+#      clean-period: 1
+mybatis-plus:
+  global-config:
+    banner: false
