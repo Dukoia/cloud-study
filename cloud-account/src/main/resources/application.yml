@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-account
+    name: CLOUD-ACCOUNT
   datasource:
     hikari:
       connection-timeout: 30000
@@ -21,11 +21,15 @@ spring:
       transport:
         dashboard: 127.0.0.1:8888
         port: 8720
-
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+#        group: CLOUD-STUDY
+#        service: cloud-account
 seata:
   enabled: true
   application-id: cloud-account
-  tx-service-group: cloud_study_tx_group
+  tx-service-group: SEATA_GROUP
   enable-auto-data-source-proxy: true
   data-source-proxy-mode: AT
   use-jdk-proxy: false
@@ -66,7 +70,7 @@ seata:
 #      virtual-nodes: 10
   service:
     vgroup-mapping:
-      cloud_study_tx_group: default
+      SEATA_GROUP: default
     grouplist:
       default: 127.0.0.1:8091
     enable-degrade: false

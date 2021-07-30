@@ -11,6 +11,7 @@
         <module>cloud-account</module>
         <module>cloud-order</module>
         <module>cloud-storage</module>
+        <module>cloud-cache</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

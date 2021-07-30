@@ -1,10 +1,9 @@
-
 spring:
   application:
     name: cloud-account
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.0:8848
+        server-addr: 127.0.0.1:8848
         group: CLOUD-STUDY
-        service: CLOUD-ACCOUNT
+        service: cloud-account
