@@ -2,3 +2,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+  cache:
+    caffeine:
+      spec: maximumSize=500, expireAfterAccess=30s
+    cache-names: dukoia
